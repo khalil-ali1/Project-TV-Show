@@ -1,6 +1,33 @@
 body{
-  background: gray;
+  margin: 2% 10%;
+background: rgb(228, 227, 227);
+  display:grid;
+  grid-template-columns: 400px 400px 400px 400px;
 }
 #root {
   color: red;
+}
+#card{
+text-align: center;
+width:350px;
+height:600px;
+background: white;
+margin: 20px;
+border-radius: 5px;
+}
+#card h3{
+border: 1px solid black ;
+height:45px;
+border-radius: 5px;
+background-color: rgba(199, 197, 197, 0.829);
+padding-top: 15px;
+}
+
+#card p{
+  margin: 20px;
+}
+
+footer{
+  background: red;
+  display: fixed;
 }
