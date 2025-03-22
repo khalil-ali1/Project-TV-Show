@@ -1,6 +1,6 @@
-body{
+#container{
   margin: 2% 10%;
-background: rgb(228, 227, 227);
+background: black;
   display:grid;
   grid-template-columns: 400px 400px 400px 400px;
 }

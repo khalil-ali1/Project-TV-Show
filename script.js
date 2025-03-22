@@ -18,21 +18,24 @@ const allEpisodes = getAllEpisodes()
 console.log(allEpisodes)
 //   rootElem.textContent = `Got ${episodeList.length} episode(s)`;
 // }
-function showEpisode(episode){
 
-  const paragraph = document.createElement("section")
-  paragraph.id = "card";
-  paragraph.innerHTML = `
-  <h3>${episode.name} - S${String(episode.season).padStart(2, '0')}E${String(episode.number).padStart(2, '0') }</h3>
+const container = document.createElement("section")
+container.id = "container";
+
+function showEpisode(episode){
+  const card = document.createElement("section")
+  card.id = "card";
+  card.innerHTML = `
+  <h3>${episode.name} - S${String(episode.season).padStart(2,'0')}E${String(episode.number).padStart(2,'0') }</h3>
   <img src=${episode.image.medium} alt:image for the episode>
   <p>${episode.summary} </p>`
-  document.body.appendChild(paragraph)
+  document.body.appendChild(card)
 }
 for (let i = 0; i < allEpisodes.length; i++ ){
   let episode = allEpisodes[i]
   showEpisode(episode)
 }
 const footer = document.createElement("footer");
-footer.innerText=`<p>All files</p>`
+footer.innerText =`<p>All data has (originally) come from [TVMaze.com](https://tvmaze.com/)</p>`
 document.body.appendChild(footer)
 // window.onload = setup;
