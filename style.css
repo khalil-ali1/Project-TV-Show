@@ -1,14 +1,15 @@
+body{
+  margin: 0px;
+}
 #container{
-  margin: 2% 10%;
-background: black;
+  text-align: center;
+  background: rgb(236, 232, 232);
   display:grid;
   grid-template-columns: 400px 400px 400px 400px;
+  justify-content: center;
 }
-#root {
-  color: red;
-}
+
 #card{
-text-align: center;
 width:350px;
 height:600px;
 background: white;
@@ -16,10 +17,10 @@ margin: 20px;
 border-radius: 5px;
 }
 #card h3{
-border: 1px solid black ;
+border: 1px solid silver ;
 height:45px;
 border-radius: 5px;
-background-color: rgba(199, 197, 197, 0.829);
+margin: 0px 0px 25px 0px ;
 padding-top: 15px;
 }
 
@@ -28,6 +29,14 @@ padding-top: 15px;
 }
 
 footer{
-  background: red;
-  display: fixed;
+  height: 40px;
+  width: 100%;
+  background: rgb(211, 103, 211);
+  bottom: 0px;
+  position:fixed;
+  text-align: center;
+  color:white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
