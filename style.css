@@ -3,22 +3,23 @@ body{
 }
 #container{
   text-align: center;
-  background: rgb(236, 232, 232);
+  background: rgb(241, 241, 241);
   display:grid;
   grid-template-columns: 400px 400px 400px 400px;
   justify-content: center;
 }
 
 #card{
+box-shadow: 5px 5px 5px rgb(167, 164, 164);
 width:350px;
-height:600px;
+height:500px;
 background: white;
 margin: 20px;
 border-radius: 5px;
 }
 #card h3{
-border: 1px solid silver ;
-height:45px;
+border: 2px solid  silver;
+height:40px;
 border-radius: 5px;
 margin: 0px 0px 25px 0px ;
 padding-top: 15px;
