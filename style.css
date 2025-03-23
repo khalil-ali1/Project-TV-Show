@@ -36,8 +36,10 @@ footer{
   bottom: 0px;
   position:fixed;
   text-align: center;
-  color:white;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+footer a{
+  color: black;
 }

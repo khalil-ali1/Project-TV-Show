@@ -12,7 +12,7 @@ function showEpisode(episode){
   card.id = "card";
   card.innerHTML = `
   <h3>${episode.name} - S${String(episode.season).padStart(2,'0')}E${String(episode.number).padStart(2,'0') }</h3>
-  <img src=${episode.image.medium} alt:image for the episode>
+  <img src=${episode.image.medium} alt="image for the episode">
   <p>${episode.summary} </p>`
   container.appendChild(card);
 }
