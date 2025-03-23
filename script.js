@@ -1,23 +1,6 @@
 //You can edit ALL of the code here
 
-//const episodeName: ${getOneEpisode().name}
-//const seasonNumber: ${getOneEpisode().season}
-//const episodeNumber: ${getOneEpisode().number}
-//const image:src=${getOneEpisode().image.medium} alt:image for the episode
-//const episodeSummary : ${getOneEpisode().summary} 
-
-// function setup() {
-//   const allEpisodes = getAllEpisodes();
-//   makePageForEpisodes(allEpisodes);
-// }
-
-// function makePageForEpisodes(episodeList) {
-//   const root<h3>${getOneEpisode().name} - S${getOneEpisode().number} </h3
-Elem = document.getElementById("root");
 const allEpisodes = getAllEpisodes()
-console.log(allEpisodes)
-//   rootElem.textContent = `Got ${episodeList.length} episode(s)`;
-// }
 
 const container = document.createElement("section")
 container.id = "container";
@@ -38,6 +21,6 @@ for (let i = 0; i < allEpisodes.length; i++ ){
   showEpisode(episode)
 }
 const footer = document.createElement("footer");
-footer.innerHTML =`All data has (originally) come from <a href="https://tvmaze.com/">TVMaze.com</a>`
+footer.innerHTML =`<p>All data has (originally) come from <a href="https://tvmaze.com/">TVMaze.com</a></p>`
 document.body.appendChild(footer)
 // window.onload = setup;
