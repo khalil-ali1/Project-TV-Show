@@ -1,5 +1,7 @@
 //You can edit ALL of the code here
 const display = document.getElementById("display");
+const searchEpisode = document.getElementById("search-box")
+const numEpisodes = document.getElementById("total-episodes")
 
 const allEpisodes = getAllEpisodes()
 
@@ -14,13 +16,21 @@ function showEpisode(episode){
   display.appendChild(episodeCard)
 }
 
-function setup(){
-  for (let index = 0; index < allEpisodes.length; index++) {
-    let episode = allEpisodes[index];
+function setup(arrOfEpisodes){
+  display.innerHTML = "";
+  for (let index = 0; index < arrOfEpisodes.length; index++) {
+    let episode = arrOfEpisodes[index];
     showEpisode(episode);
   }
+  numEpisodes.textContent = `Showing ${arrOfEpisodes.length} / ${allEpisodes.length} episodes`;
+}
+
+function handleSearchEpisode(){
+  const query = searchEpisode.value.toLowerCase();
+  const searchedEpisodes = allEpisodes.filter((episode) => episode.summary.toLowerCase().includes(query) || episode.name.toLowerCase().includes(query));
+  setup(searchedEpisodes);
 }
 
 
-
-window.onload = setup;
+searchEpisode.addEventListener("input", handleSearchEpisode)
+window.onload = () => setup(allEpisodes);
