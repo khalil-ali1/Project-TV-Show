@@ -4,8 +4,23 @@ const searchEpisode = document.getElementById("search-box")
 const numEpisodes = document.getElementById("total-episodes")
 const episodeSelector = document.getElementById("episodeSelect");
 const filter = document.getElementById("filter");
+let allEpisodes = [];
+// const allEpisodes = getAllEpisodes()
 
-const allEpisodes = getAllEpisodes()
+async function fetchAllEpisodes(){
+  try{
+    const response = await fetch("https://api.tvmaze.com/shows/82/episodes");
+    if (!response.ok) {
+      throw new Error(`Could not fetch resource: ${response.status}`);
+    }
+    allEpisodes= await response.json();
+    setup(allEpisodes);
+  }
+  catch (error) {
+    console.error("Error fetching episodes:", error);
+    container.innerHTML = `<p class="error">Failed to load episodes. Please try again later.</p>`;
+  }
+  }
 
 function showEpisode(episode){
 
@@ -48,7 +63,9 @@ episodeSelector.addEventListener("change", function () {
     const backToAll = document.createElement("button");
     filter.innerHTML = "";
     backToAll.textContent = "BACK";
-    backToAll.addEventListener("click", () => setup(allEpisodes));
+    backToAll.addEventListener("click", () => {
+    setup(allEpisodes);
+    allEpisodes.forEach(showEpisode)});
     filter.appendChild(backToAll);
     
   }
@@ -56,4 +73,4 @@ episodeSelector.addEventListener("change", function () {
 })
 
 searchEpisode.addEventListener("input", handleSearchEpisode)
-window.onload = () => setup(allEpisodes);
+window.onload = fetchAllEpisodes;
