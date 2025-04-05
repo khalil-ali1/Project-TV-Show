@@ -1,11 +1,26 @@
 //You can edit ALL of the code here
-const display = document.getElementById("display");
+const container = document.getElementById("container");
 const searchEpisode = document.getElementById("search-box")
 const numEpisodes = document.getElementById("total-episodes")
 const episodeSelector = document.getElementById("episodeSelect");
 const filter = document.getElementById("filter");
+let allEpisodes = [];
+// const allEpisodes = getAllEpisodes()
 
-const allEpisodes = getAllEpisodes()
+async function fetchAllEpisodes(){
+  try{
+    const response = await fetch("https://api.tvmaze.com/shows/82/episodes");
+    if (!response.ok) {
+      throw new Error(`Could not fetch resource: ${response.status}`);
+    }
+    allEpisodes= await response.json();
+    setup(allEpisodes);
+  }
+  catch (error) {
+    console.error("Error fetching episodes:", error);
+    container.innerHTML = `<p class="error">Failed to load episodes. Please try again later.</p>`;
+  }
+  }
 
 function showEpisode(episode){
 
@@ -15,11 +30,11 @@ function showEpisode(episode){
   <h3>${episode.name} - S${String(episode.season).padStart(2, '0')}E${String(episode.number).padStart(2, '0') }</h3>
   <img src=${episode.image.medium} alt="image for the episode">
   <p>${episode.summary} </p>`
-  display.appendChild(episodeCard)
+  container.appendChild(episodeCard)
 }
 
 function setup(arrOfEpisodes){
-  display.innerHTML = "";
+  container.innerHTML = "";
   filter.innerHTML = "";
   episodeSelector.innerHTML = `<option value="">Select an episode</option>`;
   for (let index = 0; index < arrOfEpisodes.length; index++) {
@@ -42,13 +57,15 @@ function handleSearchEpisode(){
 episodeSelector.addEventListener("change", function () {
   const chosenEpisode = allEpisodes.find((episode) => episode.id == this.value);
   if (chosenEpisode) {
-    display.innerHTML = "";
+    container.innerHTML = "";
     showEpisode (chosenEpisode);
     numEpisodes.textContent = `Showing 1 / ${allEpisodes.length} episodes`;
     const backToAll = document.createElement("button");
     filter.innerHTML = "";
     backToAll.textContent = "BACK";
-    backToAll.addEventListener("click", () => setup(allEpisodes));
+    backToAll.addEventListener("click", () => {
+    setup(allEpisodes);
+    allEpisodes.forEach(showEpisode)});
     filter.appendChild(backToAll);
     
   }
@@ -56,4 +73,4 @@ episodeSelector.addEventListener("change", function () {
 })
 
 searchEpisode.addEventListener("input", handleSearchEpisode)
-window.onload = () => setup(allEpisodes);
+window.onload = fetchAllEpisodes;
