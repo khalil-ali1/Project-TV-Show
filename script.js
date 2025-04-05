@@ -1,5 +1,5 @@
 //You can edit ALL of the code here
-const display = document.getElementById("display");
+const container = document.getElementById("container");
 const searchEpisode = document.getElementById("search-box")
 const numEpisodes = document.getElementById("total-episodes")
 const episodeSelector = document.getElementById("episodeSelect");
@@ -15,11 +15,11 @@ function showEpisode(episode){
   <h3>${episode.name} - S${String(episode.season).padStart(2, '0')}E${String(episode.number).padStart(2, '0') }</h3>
   <img src=${episode.image.medium} alt="image for the episode">
   <p>${episode.summary} </p>`
-  display.appendChild(episodeCard)
+  container.appendChild(episodeCard)
 }
 
 function setup(arrOfEpisodes){
-  display.innerHTML = "";
+  container.innerHTML = "";
   filter.innerHTML = "";
   episodeSelector.innerHTML = `<option value="">Select an episode</option>`;
   for (let index = 0; index < arrOfEpisodes.length; index++) {
@@ -42,7 +42,7 @@ function handleSearchEpisode(){
 episodeSelector.addEventListener("change", function () {
   const chosenEpisode = allEpisodes.find((episode) => episode.id == this.value);
   if (chosenEpisode) {
-    display.innerHTML = "";
+    container.innerHTML = "";
     showEpisode (chosenEpisode);
     numEpisodes.textContent = `Showing 1 / ${allEpisodes.length} episodes`;
     const backToAll = document.createElement("button");

@@ -1,34 +1,40 @@
-#display{
-  margin: 2% 10px;
-background: rgb(228, 227, 227);
-  display:grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+body{
+  text-align: center;
 }
-#root {
-  color: red;
+#container{
+  margin: 2% 10px;
+  background: rgb(236, 235, 235);
+  display:grid;
+  grid-template-columns: 0.8fr 0.8fr 0.8fr 0.8fr;
 }
 #card{
-text-align: center;
 width:300px;
-height:600px;
+height:475px;
 background: white;
-margin: 10px;
+margin:10px 0px 30px 80px;
 border-radius: 5px;
 }
 #card h3{
 border: 1px solid black ;
 height:45px;
 border-radius: 5px;
-background-color: rgba(199, 197, 197, 0.829);
 padding-top: 15px;
+margin-top:0px;
 }
 
 #card p{
   margin: 20px;
+  color:rgb(121, 114, 114)
 }
 
 footer{
-  background: red;
-  display: fixed;
-  text-align: center;
+  margin-top:5px ;
+  background: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+footer a{
+  color:black;
 }
