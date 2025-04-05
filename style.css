@@ -3,7 +3,7 @@ body{
   background: rgb(236, 235, 235);
 }
 #container{
-  margin: 2% 10px;
+  margin: 2% 8%;
   
   display:grid;
   grid-template-columns: 0.8fr 0.8fr 0.8fr 0.8fr;
