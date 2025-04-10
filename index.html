@@ -9,16 +9,21 @@
   </head>
 
   <body>
-    <div id="filter-handles">
+    <div id="filter-handles">      
       <p>
-        <input type="search" placeholder="Search episode" id="search-box">
-        <br><br>
-        <span id="total-episodes"></span>
+        <label for="tvshowSelect">Choose a TV Show:</label>
+        <select id="tvshowSelect">
+        </select>
       </p>
       <p>
         <label for="episodeSelect">Choose an episode:</label>
         <select id="episodeSelect">
         </select>
+      </p>
+      <p>Search Episode: 
+        <input type="search" placeholder="Search episode" id="search-box">
+        <br><br>
+        <span id="total-episodes"></span>
       </p>
       <span id="filter"></span>
     </div>
