@@ -34,6 +34,7 @@ async function fetchAllShows() {
     }
     allShows = await response.json();
     initialSetup(allShows);
+    console.log(allShows)
   } catch (error) {
     console.error("Error fetching TV shows:", error);
     container.innerHTML = `<p class="error">Failed to load TV shows. Please try again later.</p>`;
@@ -55,15 +56,30 @@ function initialSetup(arrOfTVShows){
     showSelector.appendChild(option);
   }
 }
-
+function ratingShow(obj){
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      return`${key}: ${obj[key]}`;
+    }
+  } 
+}
 function showTVShow(tvshow){
   const tvShowCard = document.createElement("section");
-  tvShowCard.id = "card";
+  tvShowCard.id = "film-card";
   tvShowCard.innerHTML = `
-  <h3>${tvshow.name}</h3>
   <img src=${tvshow.image.medium} alt="image of the TV Show">
-  <p>${tvshow.summary} </p>`;
-  container.appendChild(tvShowCard);
+  <div id="article" >
+  <h3>${tvshow.name}</h3>
+  <p>${tvshow.summary} </p>
+  </div>
+  <div id="film-details">
+  <p>genres:${tvshow.genres}<br>
+  status: ${tvshow.status}<br>
+  rating: ${ratingShow(tvshow.rating)} <br>
+  runtime: ${tvshow.runtime}<br> </p>
+  </div>
+  `
+  document.getElementById("filmListOverlay").appendChild(tvShowCard);
 }
 
 function showEpisode(episode){
@@ -119,6 +135,10 @@ episodeSelector.addEventListener("change", function () {
   }
   searchEpisode.value = "";
 })
+function showsContainerHandler(){
+fetchAllShows()
+// showTVShow(tvShow)
+}
 
 searchEpisode.addEventListener("input", handleSearchEpisode)
-window.onload = fetchAllShows;
+window.onload = showsContainerHandler;
