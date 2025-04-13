@@ -9,20 +9,26 @@
   </head>
 
   <body>
-
+         <p>
+        <label for="tvshowSelect">Choose a TV Show:</label>
+        <select id="tvshowSelect">
+        </select>
+      </p><br><br>
+      <p>Search Film: 
+        <input type="search" placeholder="Search film" id="film-search">
+        <br><br>
+        <span id="search-film"></span>
+      </p>
     <div id="filmListOverlay">
   <h1>Choose a Film</h1>
-</div>
+  </div>
 
+  <!--  -->
 <div id="websiteContent" style="display: none;">
   <h1>Welcome to the Film Episodes Section</h1>
   
     <div id="filter-handles">      
-      <p>
-        <label for="tvshowSelect">Choose a TV Show:</label>
-        <select id="tvshowSelect">
-        </select>
-      </p>
+ 
       <p>
         <label for="episodeSelect">Choose an episode:</label>
         <select id="episodeSelect">
@@ -44,10 +50,10 @@
 
     <!-- Loads YOUR javascript code -->
     <script src="script.js"></script>
-
+</div>
     <footer>
       <p> All files from <a href="tvmaze.com">TV Maze</a></p>
     </footer>
-  </div>
+  
   </body>
 </html>

@@ -7,6 +7,7 @@ const showSelector = document.getElementById("tvshowSelect");
 const filterButtonSpace = document.getElementById("filter");
 let allEpisodes = [];
 let allShows = [];
+let searchedFilms = [];
 // const allEpisodes = getAllEpisodes()
 
 async function fetchAllEpisodes(tvshow){
@@ -17,7 +18,7 @@ async function fetchAllEpisodes(tvshow){
       }
       allEpisodes= await response.json();
       setup(allEpisodes);
-      console.log(allEpisodes);
+      // console.log(allEpisodes);
   }
   catch (error) {
     console.error("Error fetching episodes:", error);
@@ -37,15 +38,15 @@ async function fetchAllShows() {
     console.log(allShows)
   } catch (error) {
     console.error("Error fetching TV shows:", error);
-    container.innerHTML = `<p class="error">Failed to load TV shows. Please try again later.</p>`;
+    document.getElementById("filmListOverlay").innerHTML = `<p class="error">Failed to load TV shows. Please try again later.</p>`;
   }
 }
 
 function initialSetup(arrOfTVShows){
   arrOfTVShows.sort((a, b) => a.name.localeCompare(b.name));
-  container.innerHTML = "";
+  document.getElementById("filmListOverlay").innerHTML = "";
   filterButtonSpace.innerHTML = "";
-  episodeSelector.innerHTML = `<option value="">Select an episode</option>`;
+  document.getElementById("tvshowSelect").innerHTML = `<option value="">Select an episode</option>`;
   showSelector.innerHTML = `<option value="">Select a TV show</option>`;
   for (let index = 0; index < arrOfTVShows.length; index++) {
     let tvShow = arrOfTVShows[index];
@@ -108,6 +109,7 @@ function setup(arrOfEpisodes){
 }
 
 function handleSearchEpisode(){
+  searchEpisode.addEventListener("input", handleSearchEpisode)
   const query = searchEpisode.value.toLowerCase();
   const searchedEpisodes = allEpisodes.filter((episode) => episode.summary.toLowerCase().includes(query) || episode.name.toLowerCase().includes(query));
   setup(searchedEpisodes);
@@ -135,10 +137,25 @@ episodeSelector.addEventListener("change", function () {
   }
   searchEpisode.value = "";
 })
+
+
 function showsContainerHandler(){
 fetchAllShows()
-// showTVShow(tvShow)
+  filmSearchHandler()
 }
 
-searchEpisode.addEventListener("input", handleSearchEpisode)
+function filmSearchHandler(){
+  document.getElementById("film-search").addEventListener("input", filmSearch)
+  function filmSearch(){
+  const query = document.getElementById("film-search").value.toLowerCase();
+  console.log(query)
+  searchedFilms = allShows.filter((film) => 
+  film.summary.toLowerCase().includes(query) 
+  || film.name.toLowerCase().includes(query)
+  || film.genres.some(genre => genre.toLowerCase().includes(query)))
+  console.log(searchedFilms);
+  initialSetup(searchedFilms)
+}
+}
+
 window.onload = showsContainerHandler;
