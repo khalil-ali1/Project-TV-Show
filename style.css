@@ -20,10 +20,10 @@ body {
   font-size: smaller;
   overflow: hidden;
   display:flex;
-  background-color: rgb(224, 223, 223);
+  background-color:rgb(224, 223, 223);
+  cursor: pointer;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
   margin-left: 10;
   border: 1px solid silver;
   margin: 10px;
