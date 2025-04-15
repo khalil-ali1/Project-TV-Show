@@ -13,8 +13,8 @@ body {
 }
 
 #film-card {
-  font-size: smaller;
-  overflow: hidden;
+  /* font-size: small; */
+  overflow: auto;
   display:flex;
   background-color:rgb(224, 223, 223);
   cursor: pointer;
@@ -27,7 +27,7 @@ body {
 }
 #film-card img{
   width: 20%;
-  height:250px;
+  height:300px;
 
 }
 #film-card h3 {
@@ -55,8 +55,9 @@ body {
 }
 
 #card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 300px;
-  background: white;
+  background: rgb(224, 223, 223);
   margin: 10px 0px 30px 80px;
   border-radius: 5px;
 }
@@ -71,12 +72,11 @@ body {
 
 #card p {
   margin: 20px;
-  color: rgb(121, 114, 114)
 }
 
 footer {
   margin-top: 5px;
-  background: white;
+  background: rgb(133, 131, 130);
   position: fixed;
   bottom: 0;
   left: 0;
@@ -94,16 +94,19 @@ nav{
   margin: 0;
   display: flex;
   padding: 10px;
-  background-color: bisque;
+  background-color: rgb(133, 131, 130);
   justify-content: space-between;
 }
 #back{
   margin: 5px 50px;
 }
 #icon{
-  color: white;
   margin: 5px 50px;
 }
 #films-container{
 margin: 100px;
 }
+#episodes-container{
+  margin: 100px;
+  display: none;
+} 

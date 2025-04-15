@@ -9,56 +9,62 @@
   </head>
 
   <body>
-    <nav><button id="back"> < Back To All Shows List </button>
-    <h3 id="icon">TV MAZE</h3></nav>
-    <div id = "films-container">
-    <h1>Choose a Film</h1>
-         <p>
-        <label for="tvshowSelect">Choose a TV Show:</label>
-        <select id="tvshowSelect">
-        </select>
-      </p>
-      <p>Search Film: 
-        <input type="search" placeholder="Search film" id="film-search">
-        <br><br>
-        <span id="search-film"></span>
-      </p>
-      
-    <div id="filmListOverlay">
-  
-  </div>
-  </div>
+    <header>
+      <nav>
+        <button id="back">< Back To All Shows List</button>
+        <h1 id="icon">TV MAZE</h1>
+      </nav>
+    </header>
+    <main id="films-container">
+      <section>
+        <h2>Choose a Film</h2>
+        <p>
+          <label for="tvshowSelect">Choose a TV Show:</label>
+          <select id="tvshowSelect"></select>
+        </p>
+        <p>
+          <label for="film-search">Search Film:</label>
+          <input type="search" placeholder="Search film" id="film-search" />
+          <br />
+          <br />
+          <span id="search-film"></span>
+        </p>
+      </section>
+      <div id="filmListOverlay"></div>
+    </main>
 
-  <div id="episodes-container" style="display: none;">
-  <h1 id="header">Welcome to the Film Episodes Section</h1>
-  
-    <div id="filter-handles">      
- 
-      <p>
-        <label for="episodeSelect">Choose an episode:</label>
-        <select id="episodeSelect">
-        </select>
-      </p>
-      <p>Search Episode: 
-        <input type="search" placeholder="Search episode" id="search-box">
-        <br><br>
-        <span id="total-episodes"></span>
-      </p>
-      <span id="filter"></span>
-    </div>
+    <main id="episodes-container">
+      <header>
+        <h1 id="header">Welcome to the Film Episodes Section</h1>
+      </header>
+      <section id="filter-handles">
+        <p>
+          <label for="episodeSelect">Choose an episode:</label>
+          <select id="episodeSelect"></select>
+        </p>
+        <p>
+          <label for="search-box"></label>
+          Search Episode:
+          <input type="search" placeholder="Search episode" id="search-box" />
+          <br />
+          <br />
+          <span id="total-episodes"></span>
+        </p>
+        <span id="filter"></span>
+      </section>
 
-    <div id="container">
+      <div id="container"></div>
+      <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
+      <script src="episodes.js"></script>
 
-    </div>
-    <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
-    <script src="episodes.js"></script>
-
-    <!-- Loads YOUR javascript code -->
-    <script src="script.js"></script>
-</div>
+      <!-- Loads YOUR javascript code -->
+      <script src="script.js"></script>
+    </main>
     <footer>
-      <p> All files from <a href="tvmaze.com">TV Maze</a></p>
+      <p>
+        All files from
+        <a href="tvmaze.com">TV Maze</a>
+      </p>
     </footer>
-  
   </body>
 </html>
