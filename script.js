@@ -34,7 +34,6 @@ async function fetchAllShows() {
     }
     allShows = await response.json();
     initialSetup(allShows);
-    console.log(allShows)
   } catch (error) {
     console.error("Error fetching TV shows:", error);
     document.getElementById("filmListOverlay").innerHTML = `<p class="error">Failed to load TV shows. Please try again later.</p>`;
@@ -80,31 +79,19 @@ function showTVShow(tvshow) {
   </div>
   `
   document.getElementById("filmListOverlay").appendChild(tvShowCard);
-  // titleChoose();
-  addClickListenerToCard(tvShowCard, tvshow);
+  filmCardClickHandler(tvShowCard, tvshow);
 }
-// function titleChoose() {
-//   document.getElementById("film-card").addEventListener("click", function () {
-//     const showName = this.querySelector('h3').textContent; // Get the title from the clicked card
-//     const chosenTVShow = allShows.find((tvShow) => tvShow.name === showName);
-//     if (chosenTVShow) {
-//       searchedFilms = [chosenTVShow];
-//       initialSetup(searchedFilms);
-//       fetchAllEpisodes(chosenTVShow); // Fetch episodes for the clicked show
-//     }
-//   });
-// }
-function addClickListenerToCard(card, tvshow) {
+
+function filmCardClickHandler(card, tvshow) {
   card.addEventListener("click", function () {
     searchedFilms = [tvshow];
     initialSetup(searchedFilms);
     fetchAllEpisodes(tvshow);
+    document.getElementById("episodes-container").style = "display: block;"
+    document.getElementById("films-container").style = "display: none;"
   });
 }
 
-function headerClick(){
-document.getElementById("header").addEventListener("click", function(){console.log("clicked")})
-}
 
 
 
@@ -136,7 +123,6 @@ function setup(arrOfEpisodes) {
 function handleSearchEpisode() {
   searchEpisode.addEventListener("input", handleSearchEpisode)
   const query = searchEpisode.value.toLowerCase();
-  console.log(query)
   const searchedEpisodes = allEpisodes.filter((episode) => 
     episode.summary.toLowerCase().includes(query) || 
     episode.name.toLowerCase().includes(query));
@@ -146,7 +132,6 @@ function handleSearchEpisode() {
 showSelector.addEventListener("change", function () {
   const chosenTVShow = allShows.find((tvShow) => tvShow.id == this.value);
   searchedFilms = [chosenTVShow];
-  console.log(searchedFilms)
   initialSetup(searchedFilms)
   fetchAllEpisodes(chosenTVShow);
 })
@@ -169,26 +154,30 @@ episodeSelector.addEventListener("change", function () {
   }
   searchEpisode.value = "";
 })
-
+function backButtonHandler(){
+  document.getElementById("back").addEventListener("click", function(){
+    initialSetup(allShows)
+    document.getElementById("episodes-container").style = "display: none;"
+    document.getElementById("films-container").style = "display: block;"
+  })
+}
 
 function showsContainerHandler() {
   fetchAllShows()
   filmSearchHandler()
   handleSearchEpisode()
+  backButtonHandler()
   
-  headerClick()
 }
- 
+// 
 function filmSearchHandler() {
   document.getElementById("film-search").addEventListener("input", filmSearch)
   function filmSearch() {
     const query = document.getElementById("film-search").value.toLowerCase();
-    console.log(query)
     searchedFilms = allShows.filter((film) =>
       film.summary.toLowerCase().includes(query)
       || film.name.toLowerCase().includes(query)
       || film.genres.some(genre => genre.toLowerCase().includes(query)))
-    console.log(searchedFilms);
     initialSetup(searchedFilms)
   }
 }
