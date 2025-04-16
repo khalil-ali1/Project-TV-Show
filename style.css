@@ -7,13 +7,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding: 20px;
-  width:90%; */
   text-align: center;
 }
 
 #film-card {
-  /* font-size: small; */
   overflow: auto;
   display:flex;
   background-color:rgb(224, 223, 223);
@@ -101,7 +98,7 @@ nav{
   margin: 5px 50px;
 }
 #icon{
-  margin: 5px 50px;
+  margin: 5px 75px;
 }
 #films-container{
 margin: 100px;

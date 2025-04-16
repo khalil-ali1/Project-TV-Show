@@ -8,7 +8,7 @@ const filterButtonSpace = document.getElementById("filter");
 let allEpisodes = [];
 let allShows = [];
 let searchedFilms = [];
-// const allEpisodes = getAllEpisodes()
+
 
 async function fetchAllEpisodes(tvshow) {
   try {
@@ -169,7 +169,6 @@ function showsContainerHandler() {
   backButtonHandler()
   
 }
-// 
 function filmSearchHandler() {
   document.getElementById("film-search").addEventListener("input", filmSearch)
   function filmSearch() {
